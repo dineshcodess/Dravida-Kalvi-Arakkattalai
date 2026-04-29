@@ -60,4 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger reveal on load and scroll
     window.addEventListener('scroll', reveal);
     reveal(); // Call once to reveal elements already in view
+    
+    // --- Hero Slider Logic ---
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        if (slides.length === 0) return;
+        
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Change slide every 4 seconds
+    if (slides.length > 0) {
+        setInterval(nextSlide, 4000);
+    }
 });
